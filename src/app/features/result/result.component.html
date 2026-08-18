@@ -1,0 +1,55 @@
+@if (exam.lastResult(); as result) {
+  <div class="result-page">
+    <section class="result-summary" [class.result-summary--pass]="result.passed" [class.result-summary--fail]="!result.passed">
+      <h1>{{ result.passed ? 'Экзамен сдан' : 'Экзамен не сдан' }}</h1>
+      <p class="result-summary__topic">{{ result.topicTitle }}</p>
+      <p class="result-summary__score">{{ result.scorePercent }}%</p>
+      <p class="result-summary__details">
+        Правильно: {{ result.correctCount }} из {{ result.totalCount }} &middot;
+        порог сдачи: {{ result.passThreshold * 100 }}% &middot;
+        время: {{ formatTime(result.timeSpentSeconds) }}
+      </p>
+      <div class="result-summary__actions">
+        <button type="button" (click)="retry()">Пройти ещё раз</button>
+        <button type="button" (click)="backToTopics()">К списку тем</button>
+      </div>
+    </section>
+
+    <section class="result-breakdown">
+      <h2>Разбор по вопросам</h2>
+      <ol class="result-breakdown__list">
+        @for (attempt of result.attempts; track attempt.questionId) {
+          <li class="attempt-card" [class.attempt-card--correct]="attempt.isCorrect" [class.attempt-card--incorrect]="!attempt.isCorrect">
+            <div class="attempt-card__header">
+              <span class="attempt-card__status">{{ attempt.isCorrect ? 'Верно' : 'Неверно' }}</span>
+              @if (attempt.markedForReview) {
+                <span class="attempt-card__marked">Было отмечено на пересмотр</span>
+              }
+            </div>
+            <p class="attempt-card__text">{{ attempt.questionText }}</p>
+            <ul class="attempt-card__answers">
+              @for (answer of attempt.answers; track answer.id) {
+                <li
+                  [class.attempt-answer--correct]="answer.correct"
+                  [class.attempt-answer--selected-wrong]="answer.selected && !answer.correct"
+                  class="attempt-answer"
+                >
+                  <span class="attempt-answer__marker">
+                    @if (answer.selected && answer.correct) {
+                      &#10003;
+                    } @else if (answer.selected && !answer.correct) {
+                      &#10007;
+                    } @else if (!answer.selected && answer.correct) {
+                      &#9675;
+                    }
+                  </span>
+                  <span>{{ answer.text }}</span>
+                </li>
+              }
+            </ul>
+          </li>
+        }
+      </ol>
+    </section>
+  </div>
+}

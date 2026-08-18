@@ -1,0 +1,80 @@
+@if (notFound) {
+  <div class="exam-page exam-page--error">
+    <p>Тема не найдена.</p>
+    <button type="button" (click)="backToTopics()">Назад к темам</button>
+  </div>
+} @else if (!exam.currentQuestion()) {
+  <div class="exam-page exam-page--error">
+    <p>Загрузка вопросов&hellip;</p>
+  </div>
+} @else {
+  <div class="exam-page">
+    <header class="exam-header">
+      <div class="exam-header__title">
+        <h1>{{ exam.topic()?.title }}</h1>
+        <p class="exam-header__progress">
+          Вопрос {{ exam.currentIndex() + 1 }} из {{ exam.totalQuestions() }} &middot;
+          отвечено {{ exam.answeredCount() }} &middot; на пересмотр {{ exam.markedCount() }}
+        </p>
+      </div>
+
+      <div class="exam-header__timer" [class.exam-header__timer--warning]="minutesLeft() === 0">
+        @if (minutesLeft() !== null) {
+          Осталось: {{ pad(minutesLeft()) }}:{{ pad(secondsLeft()) }}
+        } @else {
+          Время: {{ pad(elapsedMinutes()) }}:{{ pad(elapsedSecondsPart()) }}
+        }
+      </div>
+
+      <button type="button" class="exam-header__finish" (click)="finishExam()">Завершить экзамен</button>
+    </header>
+
+    <nav class="question-nav" aria-label="Навигация по вопросам">
+      @for (state of exam.questionStates(); track state.questionId) {
+        <button
+          type="button"
+          class="question-nav__item"
+          [class.question-nav__item--current]="state.current"
+          [class.question-nav__item--answered]="state.answered"
+          [class.question-nav__item--marked]="state.marked"
+          (click)="exam.goTo(state.index)"
+        >
+          {{ state.index + 1 }}
+        </button>
+      }
+    </nav>
+
+    <div class="question-panel">
+      <p class="question-panel__text">{{ exam.currentQuestion()!.text }}</p>
+
+      <ul class="answers-list">
+        @for (answer of exam.currentQuestion()!.answers; track answer.id) {
+          <li>
+            <label class="answer-option" [class.answer-option--selected]="exam.isAnswerSelected(answer.id)">
+              <input
+                [type]="exam.currentQuestion()!.allowMultiple ? 'checkbox' : 'radio'"
+                name="current-question-answer"
+                [checked]="exam.isAnswerSelected(answer.id)"
+                (change)="selectAnswer(answer.id)"
+              />
+              <span>{{ answer.text }}</span>
+            </label>
+          </li>
+        }
+      </ul>
+
+      <button type="button" class="mark-review-toggle" [class.mark-review-toggle--active]="exam.isCurrentMarked()" (click)="exam.toggleMarkForReview()">
+        @if (exam.isCurrentMarked()) {
+          Отменить пометку "на пересмотр"
+        } @else {
+          Отметить "на пересмотр"
+        }
+      </button>
+    </div>
+
+    <div class="exam-nav-buttons">
+      <button type="button" (click)="exam.prev()" [disabled]="exam.currentIndex() === 0">&larr; Назад</button>
+      <button type="button" (click)="exam.next()" [disabled]="exam.currentIndex() === exam.totalQuestions() - 1">Далее &rarr;</button>
+    </div>
+  </div>
+}

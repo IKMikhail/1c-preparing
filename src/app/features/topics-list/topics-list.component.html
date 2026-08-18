@@ -1,0 +1,40 @@
+<div class="topics-page">
+  <header class="topics-page__header">
+    <h1>1С: Экзаменатор (пример)</h1>
+    <p class="topics-page__subtitle">
+      Выберите тему, чтобы начать пробный экзамен. Данные вопросов — учебный пример,
+      подробнее см. <code>src/assets/data/README.md</code>.
+    </p>
+  </header>
+
+  @if (topics().length === 0) {
+    <p class="topics-page__empty">Загрузка тем&hellip;</p>
+  }
+
+  <ul class="topics-list">
+    @for (topic of topics(); track topic.id) {
+      <li class="topic-card">
+        <div class="topic-card__main">
+          <h2 class="topic-card__title">{{ topic.title }}</h2>
+          @if (topic.description) {
+            <p class="topic-card__description">{{ topic.description }}</p>
+          }
+          <p class="topic-card__meta">
+            {{ topic.questionIds.length }} вопрос(ов)
+            @if (topic.timeLimitMinutes) {
+              &middot; {{ topic.timeLimitMinutes }} мин
+            }
+            @if (lastAttemptByTopic().has(topic.id)) {
+              &middot; последняя попытка:
+              <span [class.topic-card__meta--pass]="lastAttemptByTopic().get(topic.id)!.passed"
+                    [class.topic-card__meta--fail]="!lastAttemptByTopic().get(topic.id)!.passed">
+                {{ lastAttemptByTopic().get(topic.id)!.scorePercent }}%
+              </span>
+            }
+          </p>
+        </div>
+        <button type="button" class="topic-card__start" (click)="startExam(topic.id)">Начать</button>
+      </li>
+    }
+  </ul>
+</div>
