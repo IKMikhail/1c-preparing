@@ -10,9 +10,6 @@ export interface Answer {
 
 /**
  * A single exam question.
- *
- * NOTE: The concrete question content shipped in `src/assets/data/questions.json`
- * is PLACEHOLDER example data, not real 1C exam content. See that folder's README.
  */
 export interface Question {
   id: string;

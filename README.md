@@ -1,14 +1,13 @@
-# 1С: Экзаменатор — пример тренажёра (1c-preparing)
+# 1С: Экзаменатор (1c-preparing)
 
 An Angular exam-trainer app modeled after the "1С:Экзаменатор" study tool: pick a
 topic/ticket, answer single- or multi-choice questions with navigation between
 them, mark questions "for review", watch a timer, and see a results screen with
-a per-question breakdown at the end.
+a per-question breakdown at the end. Answer options are shuffled per question
+at the start of each exam session.
 
-**The question bank is placeholder data.** `src/assets/data/questions.json`
-contains generic example questions/answers only, to demonstrate the data shape —
-see `src/assets/data/README.md`. Replace it with a real question bank later;
-no code changes are required as long as the JSON shape matches.
+The question bank lives in `src/assets/data/questions.json` — see
+`src/assets/data/README.md` for its shape and what sections are currently loaded.
 
 ## Architecture
 

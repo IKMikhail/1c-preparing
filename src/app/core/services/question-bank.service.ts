@@ -6,9 +6,8 @@ import { Question } from '../models/question.model';
 import { QuestionBankData, Topic } from '../models/topic.model';
 
 /**
- * Loads the question bank (topics + questions) from the placeholder JSON asset at
- * `src/assets/data/questions.json`. See that folder's README: the shipped data is
- * example data only, meant to be replaced with a real bank later without any code changes.
+ * Loads the question bank (topics + questions) from the JSON asset at
+ * `src/assets/data/questions.json`. See that folder's README for the data shape.
  */
 @Injectable({ providedIn: 'root' })
 export class QuestionBankService {

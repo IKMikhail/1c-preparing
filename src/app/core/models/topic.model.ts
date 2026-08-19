@@ -1,8 +1,5 @@
 /**
  * A topic / exam ticket: a named group of questions the learner can start an exam session on.
- *
- * NOTE: The concrete topics shipped in `src/assets/data/questions.json` are PLACEHOLDER
- * example data, not real 1C exam tickets. See that folder's README.
  */
 export interface Topic {
   id: string;

@@ -1,9 +1,9 @@
-# Placeholder question bank
+# Question bank
 
-`questions.json` in this folder is **example / placeholder data only**.
+`questions.json` in this folder is the real question bank for the trainer.
 
-It exists to demonstrate the data shape the app expects (`QuestionBankData` —
-see `src/app/core/models/topic.model.ts` and `question.model.ts`):
+It follows the `QuestionBankData` shape (see `src/app/core/models/topic.model.ts`
+and `question.model.ts`):
 
 - `topics`: an array of `Topic` objects, each referencing an ordered list of
   `questionIds`, an optional per-topic countdown (`timeLimitMinutes`) and pass
@@ -12,8 +12,11 @@ see `src/app/core/models/topic.model.ts` and `question.model.ts`):
   question `text`, an `answers` array (`{ id, text, correct }`), and an
   optional `allowMultiple` flag for multi-select questions.
 
-The question/answer text in this file is intentionally generic
-(`[Пример вопроса] ...`) — it does **not** represent real 1C:Предприятие exam
-content. Replace the contents of `questions.json` with a real question bank
-before using this app to actually study for the exam. As long as the replacement
-JSON matches the same shape, no code changes are required.
+Currently loaded: **Раздел 1: Общие механизмы, понятия и термины** (20 questions,
+single-choice). More sections can be added the same way — either as more
+questions under the same topic, or as additional `Topic` entries with their
+own `questionIds`.
+
+Answer options are shuffled per question at the start of each exam session
+(see `ExamService.startExam` / `shuffle`), so the on-screen order won't match
+the order in this file.
