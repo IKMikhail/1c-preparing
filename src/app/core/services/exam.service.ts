@@ -107,7 +107,7 @@ export class ExamService {
           return;
         }
         this.topicSignal.set(topic);
-        this.questionsSignal.set(questions.map((q) => ({ ...q, answers: this.shuffle(q.answers) })));
+        this.questionsSignal.set(questions);
         this.currentIndexSignal.set(0);
         this.selectedAnswersSignal.set({});
         this.markedForReviewSignal.set(new Set());
@@ -229,16 +229,6 @@ export class ExamService {
 
     this.lastResultSignal.set(result);
     this.resultsHistory.saveResult(result);
-    return result;
-  }
-
-  /** Fisher-Yates shuffle; returns a new array, leaves the input untouched. */
-  private shuffle<T>(items: T[]): T[] {
-    const result = [...items];
-    for (let i = result.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [result[i], result[j]] = [result[j], result[i]];
-    }
     return result;
   }
 

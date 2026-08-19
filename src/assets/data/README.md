@@ -12,11 +12,9 @@ and `question.model.ts`):
   question `text`, an `answers` array (`{ id, text, correct }`), and an
   optional `allowMultiple` flag for multi-select questions.
 
-Currently loaded: **Раздел 1: Общие механизмы, понятия и термины** (20 questions,
+Currently loaded: **Раздел 1: Общие механизмы, понятия и термины** (40 questions,
 single-choice). More sections can be added the same way — either as more
 questions under the same topic, or as additional `Topic` entries with their
 own `questionIds`.
 
-Answer options are shuffled per question at the start of each exam session
-(see `ExamService.startExam` / `shuffle`), so the on-screen order won't match
-the order in this file.
+Answer options are shown in the order they appear in this file (no shuffling).
