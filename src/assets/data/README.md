@@ -12,7 +12,7 @@ and `question.model.ts`):
   question `text`, an `answers` array (`{ id, text, correct }`), and an
   optional `allowMultiple` flag for multi-select questions.
 
-Currently loaded: **Раздел 1: Общие механизмы, понятия и термины** (40 questions,
+Currently loaded: **Раздел 1: Общие механизмы, понятия и термины** (71 questions,
 single-choice). More sections can be added the same way — either as more
 questions under the same topic, or as additional `Topic` entries with their
 own `questionIds`.
