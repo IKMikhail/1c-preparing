@@ -45,6 +45,9 @@
     </nav>
 
     <div class="question-panel">
+      @if (exam.currentQuestion()!.imageUrl) {
+        <img class="question-panel__image" [src]="exam.currentQuestion()!.imageUrl" alt="Иллюстрация к вопросу" />
+      }
       <p class="question-panel__text">{{ exam.currentQuestion()!.text }}</p>
 
       <ul class="answers-list">

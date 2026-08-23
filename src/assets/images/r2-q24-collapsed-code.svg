@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 78" width="620" height="78" role="img" aria-label="Свёрнутая группировка комментария и определения функции в редакторе модулей 1С">
+  <style>
+    .bg { fill: #ffffff; }
+    .code { font-family: 'Consolas', 'Courier New', monospace; font-size: 17px; }
+    .comment { fill: #008000; }
+    .keyword { fill: #0000ff; }
+    .plain { fill: #000000; }
+    .fold-box { fill: #ffffff; stroke: #808080; stroke-width: 1; }
+    .fold-mark { stroke: #000000; stroke-width: 1.2; }
+    .ellipsis-box { fill: #ffffff; stroke: #808080; stroke-width: 1; }
+    .ellipsis-text { fill: #333333; font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; }
+  </style>
+
+  <rect class="bg" x="0" y="0" width="620" height="78" />
+
+  <!-- Row 1: collapsed comment -->
+  <rect class="fold-box" x="4" y="8" width="14" height="14" />
+  <line class="fold-mark" x1="11" y1="12" x2="11" y2="18" />
+  <line class="fold-mark" x1="8" y1="15" x2="14" y2="15" />
+
+  <text class="code comment" x="26" y="20">// Определяет номер расчетного счета по</text>
+
+  <rect class="ellipsis-box" x="580" y="6" width="30" height="18" />
+  <text class="ellipsis-text" x="586" y="19">//…</text>
+
+  <!-- Row 2: collapsed function definition -->
+  <rect class="fold-box" x="4" y="42" width="14" height="14" />
+  <line class="fold-mark" x1="11" y1="46" x2="11" y2="52" />
+  <line class="fold-mark" x1="8" y1="49" x2="14" y2="49" />
+
+  <text class="code" x="26" y="54">
+    <tspan class="keyword">Функция</tspan><tspan class="plain"> ВернутьРасчетныйСчет(СчетКонтра)</tspan>
+  </text>
+
+  <rect class="ellipsis-box" x="580" y="40" width="24" height="18" />
+  <text class="ellipsis-text" x="587" y="53">…</text>
+</svg>

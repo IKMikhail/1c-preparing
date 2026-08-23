@@ -113,6 +113,15 @@
   margin-bottom: 1.25rem;
 }
 
+.question-panel__image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  margin: 0 0 1.25rem;
+}
+
 .question-panel__text {
   font-size: 1.05rem;
   margin: 0 0 1.25rem;

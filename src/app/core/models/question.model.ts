@@ -18,4 +18,6 @@ export interface Question {
   answers: Answer[];
   /** If true, more than one answer may (and might need to) be selected. Defaults to false (single choice). */
   allowMultiple?: boolean;
+  /** Optional illustration shown above the question text (path under `src/assets`, e.g. `assets/images/foo.svg`). */
+  imageUrl?: string;
 }
