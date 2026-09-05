@@ -19,6 +19,7 @@ Currently loaded:
   skips question 9, so ids go `r3-q1..r3-q8, r3-q10..r3-q70`)
 - **Раздел 4: Конструкторы** (70 questions, single-choice)
 - **Раздел 5: Технология разработки** (76 questions, single-choice)
+- **Раздел 6: Объектная модель прикладного решения** (60 questions, single-choice)
 
 More sections can be added the same way — either as more questions under an
 existing topic, or as additional `Topic` entries with their own `questionIds`.
