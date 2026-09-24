@@ -6,14 +6,16 @@ them, mark questions "for review", watch a timer, and see a results screen with
 a per-question breakdown at the end. Answer options are shuffled per question
 at the start of each exam session.
 
-The question bank lives in `src/assets/data/questions.json` — see
+The question bank lives in `src/assets/data/` (one JSON file per section under
+`sections/`, listed in `index.json`) — see
 `src/assets/data/README.md` for its shape and what sections are currently loaded.
 
 ## Architecture
 
 - `src/app/core/models` — `Question`, `Topic`/`QuestionBankData`, `ExamResult`/`QuestionAttempt`.
 - `src/app/core/services`
-  - `QuestionBankService` — loads `src/assets/data/questions.json` via `HttpClient`.
+  - `QuestionBankService` — loads `src/assets/data/index.json` and every section file it
+    lists via `HttpClient`, and merges them into one `QuestionBankData`.
   - `ExamService` — signal-based exam session state: current question index,
     selected answers, "marked for review" flags, the timer, and grading.
   - `ResultsHistoryService` — persists finished attempts to `localStorage`.

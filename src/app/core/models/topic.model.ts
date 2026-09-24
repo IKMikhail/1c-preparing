@@ -13,8 +13,19 @@ export interface Topic {
   passThreshold?: number;
 }
 
-/** Raw shape of the JSON question bank asset file. */
+/** The assembled question bank: all topics and all questions. */
 export interface QuestionBankData {
   topics: Topic[];
+  questions: import('./question.model').Question[];
+}
+
+/** Raw shape of `assets/data/index.json`: section file paths (relative to `assets/data/`), in display order. */
+export interface QuestionBankIndex {
+  sections: string[];
+}
+
+/** Raw shape of one section file in `assets/data/sections/`: a topic plus its questions. */
+export interface QuestionBankSection {
+  topic: Topic;
   questions: import('./question.model').Question[];
 }
