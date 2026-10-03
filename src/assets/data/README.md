@@ -27,6 +27,7 @@ Currently loaded:
 - **Раздел 7: Табличная модель прикладного решения** (47 questions — source is missing
   question 47, so ids go `r7-q1..r7-q46, r7-q48`)
 - **Раздел 8: Механизмы интеграции и обмена данными** (57 questions, single-choice)
+- **Раздел 9: Система взаимодействия** (35 questions, single-choice)
 
 To add a section, create `sections/razdel-N.json` and list it in `index.json`.
 To extend a section, add questions to its file and their ids to `topic.questionIds`.
